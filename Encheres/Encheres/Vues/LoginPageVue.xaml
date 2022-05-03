@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Encheres.Vues.LoginPageVue"
+             Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="WhiteSmoke">
+    <ContentPage.Content>
+        <StackLayout>
+
+        <BoxView WidthRequest="1" BackgroundColor="AntiqueWhite" HeightRequest="5" Margin="0,0,0,15" />
+        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" Margin="0,150,0,0" >
+            <Label Text="Se connecter"
+                           TextColor="CadetBlue"
+                           FontSize="Title"
+                           />
+        </StackLayout>
+
+        <StackLayout VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand">
+            <StackLayout >
+
+                <Entry x:Name="MailUtilisateur"
+                            Placeholder="Email" 
+                            Text="{Binding Email}"
+                           Margin="25,0"
+                    />
+
+                <Entry x:Name="txtMotDePasse"
+                        Placeholder="Password"
+                        Text="{Binding Password}"
+                        Margin="25,0"
+                    />
+
+
+            </StackLayout>
+
+            <Grid Margin="25,0">
+
+                <Button Text="Inscription"
+                            FontSize="14"
+                            BackgroundColor="Teal" 
+                            Command="{Binding CommandeButtonRegister}" Padding="0" Margin="0,50,0,0" CornerRadius="15"
+                            Grid.Row="3" Grid.Column="0" 
+                    />
+
+                <Button Text="CONNEXION"
+                            FontSize="14"
+                            BackgroundColor="CadetBlue" Command="{Binding CommandeButtonAuthentification}" 
+                            Padding="0" Margin="0,50,0,0" CornerRadius="15"
+                            Grid.Row="3" Grid.Column="1" 
+                    />
+
+            </Grid>
+
+        </StackLayout>
+
+    </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

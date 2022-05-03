@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Encheres.Controles.Converters"
+             x:Class="Encheres.Vues.EnchereInverseVue">
+        <!--Style générale de la page-->
+        <ContentPage.Resources>
+            <converters:IndexToColorConverter x:Key="IndexToColorConverterGrid"
+                                              EvenColor="Silver"
+                                              OddColor="White"/>
+
+            <converters:IndexToColorConverter x:Key="IndexToColorConverterText"
+                                              EvenColor="White"
+                                              OddColor="Black"/>
+        </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+        
+            
+    </ContentPage.Content>
+    <ScrollView x:Name="remote">
+
+
+
+        <StackLayout BackgroundColor="White">
+
+            <Label Text="{Binding MonEnchere.LeProduit.Nom}"
+                   FontAttributes="Bold,Italic"
+                   FontSize="20"
+                   Margin="20"
+                   HorizontalOptions="Center"
+                   TextColor="Black"/>
+
+            <Frame
+                HeightRequest="380" WidthRequest="280"
+                BackgroundColor="white" Padding="0"
+                HasShadow="True" Margin="10" CornerRadius="10"
+                HorizontalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Image Source="{Binding MonEnchere.LeProduit.Photo}"
+                           VerticalOptions="FillAndExpand"
+                           Aspect="AspectFill"/>
+                </StackLayout>
+
+            </Frame>
+            <Label Text="{Binding MonEnchere.PrixReserve,  StringFormat='Prix de Réserve : {0}'}" TextColor="Black"
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding MonEnchere.Datedebut, StringFormat='Date Début: {0}'}"
+                TextColor="Black"
+                HorizontalOptions="CenterAndExpand" />
+
+            <ContentView>
+                <Frame HasShadow="True" CornerRadius="15" Margin="20" Padding="10" HeightRequest="120" BackgroundColor="#D8D8D8">
+                    <Grid RowDefinitions="2*,2*" ColumnDefinitions="180,100" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                        <!--affichage du prix actuelle-->
+                        <Label  Grid.Row=" 0" Grid.Column="0" Text="Prix actuel :" HorizontalOptions="StartAndExpand"  FontSize="22" TextColor="Black"/>
+                        <Label Text="{Binding PrixActuel.PrixEnchere,  StringFormat='{0}'}" TextColor="Black" Grid.Column="1"
+                HorizontalOptions="CenterAndExpand" />
+                    </Grid>
+                </Frame>
+            </ContentView>
+            <ContentView IsVisible="{Binding VisibleSaisieEnchere}">
+
+                <Entry x:Name="SaisieEnchere" Grid.Row=" 1" Grid.Column="0" HorizontalOptions="StartAndExpand" Placeholder="Saisir enchere" PlaceholderColor="Black" TextColor="Black"/>
+
+                <Button x:Name="ButtonValiderEnchereInverse_Clicked" HorizontalOptions="StartAndExpand"  Text="Je le veux" Clicked="ButtonValiderEnchereInverse_Clicked" BackgroundColor="#BDBDBD "  Grid.Row="1" Grid.Column="3"/>
+            </ContentView>
+        </StackLayout>
+        
+        
+    </ScrollView>
+</ContentPage>
